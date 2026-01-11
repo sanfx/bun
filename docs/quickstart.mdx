@@ -185,7 +185,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     const server = Bun.serve({
       port: 3000,
       routes: {
-        "/": index, // [!code ++]
+        "/": () => new Response(Bun.file("./index.html")), // [!code ++]
         "/figlet": () => {
           const body = figlet.textSync('Bun!');
           return new Response(body);
